@@ -2,17 +2,14 @@
 Vue.use(Framework7Vue, Framework7)
 
 // Init Page Components
-Vue.component('page-about', {
-  template: '#page-about'
+Vue.component('page-images', {
+  template: '#page-images'
 });
-Vue.component('page-form', {
-  template: '#page-form'
+Vue.component('page-thanku', {
+  template: '#page-thanku'
 });
-Vue.component('page-dynamic-routing', {
-  template: '#page-dynamic-routing'
-});
-Vue.component('page-not-found', {
-  template: '#page-not-found'
+Vue.component('page-sorry', {
+  template: '#page-sorry'
 });
 
 // Init App
@@ -27,17 +24,18 @@ new Vue({
     // App routes
     routes: [
       {
-        path: '/about/',
-        component: 'page-about'
+        path: '/images/',
+        component: 'page-images'
       },
-      {
-        path: '/form/',
-        component: 'page-form'
+	  {
+        path: '/thanku/',
+        component: 'page-thanku'
       },
-      {
-        path: '/dynamic-route/blog/:blogId/post/:postId/',
-        component: 'page-dynamic-routing'
+	  {
+        path: '/sorry/',
+        component: 'page-sorry'
       },
+     
       {
         path: '(.*)',
         component: 'page-not-found',
