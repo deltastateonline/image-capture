@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="libs/framework7/css/framework7.min.css">
   <link rel="stylesheet" href="css/icons.css">
   <link rel="stylesheet" href="css/app.css">
-  
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
    <style type="text/css">
 	  .logo-img{
 		height:33px;  
@@ -33,49 +33,20 @@
 </head>
 <body>
   <div id="app">
-    <!-- Statusbar -->
-    <f7-statusbar></f7-statusbar>
-
-    <!-- Left Panel -->
-    <f7-panel left reveal theme-dark>
-      <f7-view id="left-panel-view">
-        <f7-page>
-          <f7-navbar title="Left Panel"></f7-navbar>
-          <f7-block strong>
-            <p>Left panel content goes here</p>
-          </f7-block>
-          <f7-block-title>Load page in panel</f7-block-title>
-          <f7-list>
-            <f7-list-item link="/about/" title="About"></f7-list-item>
-            <f7-list-item link="/form/" title="Form"></f7-list-item>
-          </f7-list>
-          <f7-block-title>Load page in main view</f7-block-title>
-          <f7-list>
-            <f7-list-item link="/about/" title="About" view="#main-view" panel-close></f7-list-item>
-            <f7-list-item link="/form/" title="Form" view="#main-view" panel-close></f7-list-item>
-          </f7-list>
-        </f7-page>
-      </f7-view>
-    </f7-panel>
-
     <!-- Right Panel -->
     <f7-panel right cover theme-dark>
       <f7-view id="right-panel-view">
         <f7-page>
           <f7-navbar title="About Image Capture" sliding></f7-navbar>
+		  <f7-block-title>My Vehicle Details</f7-block-title>
           <f7-block>
-            <p>Add some help content here</p>
+            <p>Check that the details are that for your vehicle</p>
           </f7-block>
-          <f7-block-title>Load page in panel</f7-block-title>
-          <f7-list>
-            <f7-list-item link="/about/" title="About"></f7-list-item>
-            <f7-list-item link="/form/" title="Form"></f7-list-item>
-          </f7-list>
-          <f7-block-title>Load page in main view</f7-block-title>
-          <f7-list>
-            <f7-list-item link="/about/" title="About" view="#main-view" panel-close></f7-list-item>
-            <f7-list-item link="/form/" title="Form" view="#main-view" panel-close></f7-list-item>
-          </f7-list>
+		  
+		  <f7-block-title>Add Images</f7-block-title>
+          <f7-block>
+            <p>Capture images</p>
+          </f7-block>          
         </f7-page>
       </f7-view>
     </f7-panel>
@@ -83,6 +54,7 @@
     <!-- Main View -->
     <f7-view id="main-view" main>
       <f7-page>
+	  <!--Top Menu -->
         <f7-navbar>          
           <f7-nav-title>
 			<img class="img-responsive center-block logo-img" src="https://aamc.adjustit.com.au/assets/img/logo/adjustit-plus.svg?v=20171116" alt="ADJUSTit+">
@@ -90,7 +62,51 @@
           <f7-nav-right>
             <f7-link icon-if-ios="f7:help" icon-if-md="material:help" panel-open="right"></f7-link>
           </f7-nav-right>
-        </f7-navbar>
+        </f7-navbar>		
+		<!-- claim Details -->
+		<f7-card>
+			<f7-card-header>
+				Claim Details - {{page.yourInsurer}} <i class="f7-icons">persons</i>
+			</f7-card-header>
+			<f7-card-content card-content-padding>
+				<f7-row>
+					<f7-col width="20">Claim #</f7-col>
+					<f7-col width="80">: {{page.claimNumber}}
+					</f7-col>
+				</f7-row>				
+				<f7-row>
+					<f7-col width="20">Policy #</f7-col>
+					<f7-col width="80">: {{page.policyNumber}}
+					</f7-col>
+				</f7-row>						
+			</f7-card-content>	
+		</f7-card>
+		<!-- /Claim Details -->
+		<!-- Vehicle Details -->
+		<f7-card>
+			<f7-card-header>
+				Vehicle Details <i class="fa fa-car"></i>
+			</f7-card-header>
+			<f7-card-content card-content-padding>
+				<f7-row>
+					<f7-col width="20">Rego #</f7-col>
+					<f7-col width="80">: {{page.regoNumber}}
+					</f7-col>
+				</f7-row>				
+				<f7-row>
+					<f7-col width="20">Rego State</f7-col>
+					<f7-col width="80">: {{page.regoState}}
+					</f7-col>
+				</f7-row>	
+				<f7-row>
+					<f7-col width="20">Make/Model</f7-col>
+					<f7-col width="80">: {{page.make}} / {{page.model}}
+					</f7-col>
+				</f7-row>							
+			</f7-card-content>	
+		</f7-card>
+		<!-- /Vehicle Details -->
+		
         
         <f7-block strong>
           <p>Here is your blank Framework7 app. Let's see what we have here.</p>
@@ -126,6 +142,10 @@
           <f7-list-item link="/dynamic-route/blog/45/post/125/?foo=bar#about" title="Dynamic Route"></f7-list-item>
           <f7-list-item link="/load-something-that-doesnt-exist/" title="Default Route (404)"></f7-list-item>
         </f7-list>
+		
+		
+		
+		
       </f7-page>
     </f7-view>
 

@@ -42,6 +42,20 @@ new Vue({
         path: '(.*)',
         component: 'page-not-found',
       },
-    ],
-  }
+    ]	
+  },
+  data:{
+		page:{
+			yourInsurer:"Allianz Australia Brisbane",
+			claimNumber:"1420122327",
+			policyNumber:"142A067999CMP",
+			regoNumber:"WLL829",
+			regoState:"SA",
+			make:"HOLDEN",
+			model:"CALAIS"
+			
+		}
+		
+		
+	}
 });
