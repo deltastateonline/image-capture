@@ -1,6 +1,8 @@
 // Init F7 Vue Plugin
 Vue.use(Framework7Vue, Framework7)
 
+window.Event = new Vue();
+
 // Init Page Components
 Vue.component('page-images', {
   template: '#page-images',
@@ -19,7 +21,9 @@ Vue.component('page-images', {
   methods:{
 	fileUploaded(el){
 		
-		console.log(el);
+		//console.log(el);
+		
+		Event.$emit('uploaded',el );
 		
 		/*
 		var eTarget = el.target;
@@ -45,7 +49,7 @@ Vue.component('page-images', {
 // use slots to add content to 
 Vue.component('an-image',{
 	
-	template:'<label><slot></slot></label>'
+	template:'<label ><slot></slot></label>'
 	,
 	props:{		
 		photoTitle: {required:true},
@@ -53,11 +57,12 @@ Vue.component('an-image',{
 	},
 	data(){
 		return {
-			
+			overlayUrl:"",
+			photoTitle:"",
 		}
 	},
 	methods:{
-		fileUploaded(el){
+		fileUploaded(el ,data){
 			
 			console.log(el);
 			console.log(this.overlayUrl);
@@ -78,6 +83,13 @@ Vue.component('an-image',{
 			}*/
 			
 		}
+  },
+  created(){
+	  
+	  Event.$on('uploaded',function(){
+		  console.log("Here Now");
+		  console.log(this.photoTitle);
+	  })	  
   }
 });
 
@@ -157,6 +169,12 @@ var app = new Vue({
 			console.log(hashValue)
 		};
 		x(this.claimRequest.claimKey);
+		
+		
+		Event.$on('uploaded',function(){
+		  //console.log("Here Now main");
+		})
+		
 	},
 	methods: {
 		onF7Ready(f7) {
