@@ -170,7 +170,7 @@
 						<div class="swiper-image">
 							
 							<img style="height:150px;" :src="anImage.overlayUrl" :title="anImage.photoTitle" /><br/>
-							<input  type="file" accept="image/*" style="display:none;" /><br >	
+							<input  type="file" accept="image/*" style="display:none;" @change="fileUploaded" /><br >	
 							
 						</div>
 						
@@ -212,7 +212,7 @@
       <f7-navbar title="Request Submitted"></f7-navbar>
       <f7-block-title>Request Submitted , Thank You</f7-block-title>
       <f7-block strong>
-        <p>Here is your reference number for this transaction <b>REQ2018-0000001</b></p>        
+        <p>Here is your reference number for this transaction <b>{{newRefNumber}}</b></p>        
       </f7-block>
     </f7-page>
   </template> 
