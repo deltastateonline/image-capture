@@ -43,9 +43,42 @@ Vue.component('page-images', {
 });
 
 // use slots to add content to 
-Vue.component('anImage',{
+Vue.component('an-image',{
 	
-	
+	template:'<label><slot></slot></label>'
+	,
+	props:{		
+		photoTitle: {required:true},
+		overlayUrl: {required:true},		
+	},
+	data(){
+		return {
+			
+		}
+	},
+	methods:{
+		fileUploaded(el){
+			
+			console.log(el);
+			console.log(this.overlayUrl);
+			
+			/*
+			var eTarget = el.target;
+			if(eTarget.files && eTarget.files[0]){
+				console.log(eTarget.files[0]);
+				var file = eTarget.files[0]
+				var reader = new FileReader();
+				reader.onloadend = function() {
+					 //img.src = reader.result;
+				}
+				reader.readAsDataURL(file);
+				
+			}else{
+				console.log();
+			}*/
+			
+		}
+  }
 });
 
 

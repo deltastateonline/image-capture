@@ -164,17 +164,14 @@
       <f7-block-title >Add Images</f7-block-title>
       <f7-block>
 			<f7-swiper pagination navigation scrollbar class="aamc-swiper">		
-				<f7-swiper-slide v-for="anImage in imagesList">					
-					<label>
-						<div class="swiper-text">{{anImage.photoTitle}}</div>
-						<div class="swiper-image">
-							
-							<img style="height:150px;" :src="anImage.overlayUrl" :title="anImage.photoTitle" /><br/>
-							<input  type="file" accept="image/*" style="display:none;" @change="fileUploaded" /><br >	
-							
-						</div>
-						
-					</label>
+				<f7-swiper-slide v-for="anImage in imagesList">	
+					<an-image :photoTitle="anImage.photoTitle" :overlayUrl="anImage.overlayUrl">						
+							<div class="swiper-text" >{{anImage.photoTitle}}</div>
+							<div class="swiper-image">	
+								<img style="height:150px;" :src="anImage.overlayUrl" :title="anImage.photoTitle" /><br/>
+								<input  type="file" accept="image/*" style="display:none;" @change="fileUploaded" /><br >							
+							</div>						
+					</an-image>					
 				</f7-swiper-slide>
 
 				
