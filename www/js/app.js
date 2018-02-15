@@ -10,13 +10,13 @@ var pageImages = Vue.component('page-images', {
 	  return {
 		processing : false,
 		imagesList:[
-			/*{photoTitle:'Registration Plate', overlayUrl:'/images/overlays/registration_plate.svg', overlayScale: '1'},
+			{photoTitle:'Registration Plate', overlayUrl:'/images/overlays/registration_plate.svg', overlayScale: '1'},
 			{photoTitle:'Odometer', overlayUrl:'/images/overlays/odometer.svg', overlayScale: '1'},
 			{photoTitle:'Front Left', overlayUrl:'/images/overlays/sedan_front_left.svg', overlayScale: '1.5'},
 			{photoTitle:'Front Right', overlayUrl:'/images/overlays/sedan_front_right.svg', overlayScale: '1.5'},
 			{photoTitle:'Rear Left', overlayUrl:'/images/overlays/sedan_rear_left.svg', overlayScale: '1.3'},
 			{photoTitle:'Rear Right', overlayUrl:'/images/overlays/sedan_rear_right.svg', overlayScale: '1.3'},
-			*/{photoTitle:'Add More', overlayUrl:'/images/add.more.png', overlayScale: '1.3',lastImage:true} 			
+			{photoTitle:'Add More', overlayUrl:'/images/add.more.png', overlayScale: '1.3',lastImage:true} 			
 		  ],
 		imagesAdded:[]
 	  }
