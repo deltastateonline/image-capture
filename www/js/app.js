@@ -19,26 +19,18 @@ Vue.component('page-images', {
 	  }
   },
   methods:{
-	fileUploaded(el){
+	fileUploaded(anImage, el){		
 		
-		//console.log(el);
-		
-		Event.$emit('uploaded',el );
-		
-		/*
 		var eTarget = el.target;
-		if(eTarget.files && eTarget.files[0]){
-			console.log(eTarget.files[0]);
+		if(eTarget.files && eTarget.files[0]){			
 			var file = eTarget.files[0]
 			var reader = new FileReader();
 			reader.onloadend = function() {
-				 //img.src = reader.result;
+				 anImage.overlayUrl = reader.result;
 			}
 			reader.readAsDataURL(file);
 			
-		}else{
-			console.log();
-		}*/
+		}
 		
 	}
   }
@@ -86,9 +78,11 @@ Vue.component('an-image',{
   },
   created(){
 	  
-	  Event.$on('uploaded',function(){
-		  console.log("Here Now");
-		  console.log(this.photoTitle);
+	  Event.$on('uploaded',function(el){
+		  
+		 // console.log(el);
+		 // console.log("Here Now");
+		 // console.log(this);
 	  })	  
   }
 });

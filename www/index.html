@@ -169,7 +169,7 @@
 							<div class="swiper-text" >{{anImage.photoTitle}}</div>
 							<div class="swiper-image">	
 								<img style="height:150px;" :src="anImage.overlayUrl" :title="anImage.photoTitle" /><br/>
-								<input  type="file" accept="image/*" style="display:none;" @change="fileUploaded" /><br >							
+								<input  type="file" accept="image/*" style="display:none;" @change="fileUploaded(anImage,$event)" /><br >							
 							</div>						
 					</an-image>					
 				</f7-swiper-slide>
