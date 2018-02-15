@@ -4,36 +4,69 @@ Vue.use(Framework7Vue, Framework7)
 window.Event = new Vue();
 
 // Init Page Components
-Vue.component('page-images', {
+var pageImages = Vue.component('page-images', {
   template: '#page-images',
   data(){
 	  return {
+		processing : false,
 		imagesList:[
-			{photoTitle:'Registration Plate', overlayUrl:'/images/overlays/registration_plate.svg', overlayScale: '1'},
+			/*{photoTitle:'Registration Plate', overlayUrl:'/images/overlays/registration_plate.svg', overlayScale: '1'},
 			{photoTitle:'Odometer', overlayUrl:'/images/overlays/odometer.svg', overlayScale: '1'},
 			{photoTitle:'Front Left', overlayUrl:'/images/overlays/sedan_front_left.svg', overlayScale: '1.5'},
 			{photoTitle:'Front Right', overlayUrl:'/images/overlays/sedan_front_right.svg', overlayScale: '1.5'},
 			{photoTitle:'Rear Left', overlayUrl:'/images/overlays/sedan_rear_left.svg', overlayScale: '1.3'},
-			{photoTitle:'Rear Right', overlayUrl:'/images/overlays/sedan_rear_right.svg', overlayScale: '1.3'}  
-		  ]
+			{photoTitle:'Rear Right', overlayUrl:'/images/overlays/sedan_rear_right.svg', overlayScale: '1.3'},
+			*/{photoTitle:'Add More', overlayUrl:'/images/add.more.png', overlayScale: '1.3',lastImage:true} 			
+		  ],
+		imagesAdded:[]
 	  }
   },
   methods:{
 	fileUploaded(anImage, el){		
 		
+		var self = this;
+		self.processing = true;
 		var eTarget = el.target;
 		if(eTarget.files && eTarget.files[0]){			
 			var file = eTarget.files[0]
 			var reader = new FileReader();
 			reader.onloadend = function() {
 				 anImage.overlayUrl = reader.result;
+				 
+				 if(anImage.lastImage != undefined && anImage.lastImage){	
+				 anImage.lastImage = false;
+					 self.imagesList.push(
+						{photoTitle:'Add More', overlayUrl:'/images/add.more.png', overlayScale: '1.3',lastImage:true}
+					 );				
+				 }
+				self.imagesAdded.push(1);
+				self.processing = false;
 			}
 			reader.readAsDataURL(file);
 			
 		}
 		
 	}
-  }
+  },
+  created(){
+		
+		
+		Event.$on('lastuploaded',function(){
+		  console.log(pageImages.$data);
+		  /*pageImages.options.data().push(
+			 {photoTitle:'Add More', overlayUrl:'/images/add.more.png', overlayScale: '1.3',lastImage:true}
+		  );*/
+		})
+		
+  },
+  computed:{
+		
+		imageCount(){
+			//return "#"+this.name.toLowerCase().replace(/ /g,'-');
+			return this.imagesAdded.length;
+		}
+		
+	}
   
   
 });
@@ -54,28 +87,8 @@ Vue.component('an-image',{
 		}
 	},
 	methods:{
-		fileUploaded(el ,data){
-			
-			console.log(el);
-			console.log(this.overlayUrl);
-			
-			/*
-			var eTarget = el.target;
-			if(eTarget.files && eTarget.files[0]){
-				console.log(eTarget.files[0]);
-				var file = eTarget.files[0]
-				var reader = new FileReader();
-				reader.onloadend = function() {
-					 //img.src = reader.result;
-				}
-				reader.readAsDataURL(file);
-				
-			}else{
-				console.log();
-			}*/
-			
-		}
-  },
+		
+	},
   created(){
 	  
 	  Event.$on('uploaded',function(el){
