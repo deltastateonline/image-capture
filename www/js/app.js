@@ -74,7 +74,7 @@ var pageImages = Vue.component('page-images', {
 // use slots to add content to 
 Vue.component('an-image',{
 	
-	template:'<label ><slot></slot></label>'
+	template:'<div ><slot></slot></div>'
 	,
 	props:{		
 		photoTitle: {required:true},
@@ -151,6 +151,7 @@ var app = new Vue({
     ]	
   },
   data:{
+		
 		page:{
 			yourInsurer:"Allianz Australia Brisbane",
 			claimNumber:"1420122327",
@@ -162,8 +163,7 @@ var app = new Vue({
 			
 		},
 		claimRequest:{
-			claimKey:"",
-			
+			claimKey:"",			
 		}
 		
 		
@@ -175,13 +175,7 @@ var app = new Vue({
 		var x = function makeAjax(hashValue){
 			console.log(hashValue)
 		};
-		x(this.claimRequest.claimKey);
-		
-		
-		Event.$on('uploaded',function(){
-		  //console.log("Here Now main");
-		})
-		
+		x(this.claimRequest.claimKey);		
 	},
 	methods: {
 		onF7Ready(f7) {
